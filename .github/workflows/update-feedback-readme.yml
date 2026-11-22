@@ -1,0 +1,49 @@
+name: 更新公開回報 README
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: read
+
+concurrency:
+  group: update-feedback-readme
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: oras-project/setup-oras@ac735097e22fe643015b0d19645f7c9a69942128 # v2.0.4
+
+      - name: 取回文件並更新 README
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          stage=$(mktemp -d)
+          trap 'rm -rf -- "$stage"' EXIT
+          oras pull --username "$GITHUB_ACTOR" --password-stdin --output "$stage" \
+            ghcr.io/ycnaclptz/qiangqiang-feedback-readme:latest <<< "$GH_TOKEN"
+          test -f "$stage/README.md"
+          test ! -L "$stage/README.md"
+          test ! -L README.md
+          cp -- "$stage/README.md" README.md
+          git add -- README.md
+          if git diff --cached --quiet -- README.md; then
+            echo "README 已是最新版本。"
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m 'docs(回報): 同步公開回報說明' -- README.md
+          git push origin HEAD:main
