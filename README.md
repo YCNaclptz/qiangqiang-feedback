@@ -1,6 +1,6 @@
 # 嗆嗆姬問題回報與功能建議
 
-使用嗆嗆姬時遇到問題，或希望她學會新功能？可以在這裡告訴我們。
+使用嗆嗆姬時遇到問題，或希望她學會新功能？可以在這裡告訴我們。查看回報免登入，發文或留言需登入 GitHub。
 
 - [回報錯誤](https://github.com/YCNaclptz/qiangqiang-feedback/issues/new?template=bug.yml) · 告訴我們你做了什麼，以及嗆嗆姬的反應。
 - [提出功能建議](https://github.com/YCNaclptz/qiangqiang-feedback/issues/new?template=feature.yml) · 描述你想完成的事，以及這個功能可以怎麼幫忙。
