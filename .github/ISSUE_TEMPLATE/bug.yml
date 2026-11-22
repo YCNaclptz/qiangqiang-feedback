@@ -1,0 +1,30 @@
+name: 錯誤回報
+description: 嗆嗆姬的反應和你預期的不同嗎？告訴我們發生了什麼事。
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: 這份回報會公開顯示。請用自己的話描述過程，並在貼上截圖前遮住私訊、帳號名稱和邀請連結。
+  - type: textarea
+    id: steps
+    attributes:
+      label: 你做了哪些操作？
+      description: 請寫下使用的指令或功能，以及問題發生前的步驟。
+      placeholder: 例如：我在 Discord 對一則訊息按右鍵，選了「製作語錄卡」。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 你預期會看到什麼？
+      placeholder: 例如：我預期會看到語錄卡的預覽圖。
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 實際發生了什麼事？
+      description: 如果有錯誤提示，請寫下提示文字，也可以附上已遮蔽個資的截圖。
+      placeholder: 例如：等了一分鐘，畫面仍然顯示正在處理。
+    validations:
+      required: true

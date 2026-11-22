@@ -1,0 +1,20 @@
+name: 功能建議
+description: 希望嗆嗆姬能幫你做什麼？分享你的使用情境。
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: 這份建議會公開顯示。如果要舉例，請用虛構的對話或名稱。
+  - type: textarea
+    id: need
+    attributes:
+      label: 你想用嗆嗆姬完成什麼事？
+      description: 說說你會在什麼情況下用到這個功能，或目前遇到什麼不便。
+      placeholder: 例如：回到很久沒看的頻道時，我想快速找到大家最後做的決定。
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你希望這個功能怎麼用？（選填）
+      placeholder: 例如：請嗆嗆姬摘要時，可以選擇只列出已經決定的事項。
